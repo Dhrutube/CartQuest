@@ -12,7 +12,7 @@ spinach`
 export default function GroceryInput({ onSubmit, isLoading }) {
   const [items, setItems] = useState(DEFAULT_LIST)
   const [zipCode, setZipCode] = useState('92092')
-  const [tripCost, setTripCost] = useState('3.00')
+  const [tripCost, setTripCost] = useState('0.00')
 
   const handleSubmit = () => {
     const itemList = items
