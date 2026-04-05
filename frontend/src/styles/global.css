@@ -1,0 +1,454 @@
+:root {
+  --bg: #faf7f2;
+  --bg-card: #ffffff;
+  --bg-input: #f4f0e8;
+  --text: #1a1612;
+  --text-muted: #7a7062;
+  --accent: #e85d26;
+  --accent-hover: #d14e1c;
+  --green: #2d8a4e;
+  --green-light: #e8f5ec;
+  --red: #c0392b;
+  --red-light: #fce8e6;
+  --yellow: #f0a500;
+  --yellow-light: #fef7e0;
+  --border: #e8e2d8;
+  --shadow: 0 2px 12px rgba(26, 22, 18, 0.06);
+  --shadow-lg: 0 8px 32px rgba(26, 22, 18, 0.1);
+  --radius: 12px;
+  --radius-sm: 8px;
+
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* ---- Layout ---- */
+.app-container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+}
+
+.app-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.app-header h1 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 2.8rem;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.app-header h1 .emoji {
+  display: inline-block;
+  animation: wiggle 2s ease-in-out infinite;
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-8deg); }
+  75% { transform: rotate(8deg); }
+}
+
+.app-header p {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* ---- Card ---- */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+  box-shadow: var(--shadow);
+}
+
+.card + .card {
+  margin-top: 24px;
+}
+
+.card h2 {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+/* ---- Grocery Input ---- */
+.input-group {
+  margin-bottom: 16px;
+}
+
+.input-group label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.input-group textarea {
+  width: 100%;
+  min-height: 120px;
+  padding: 14px 16px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--bg-input);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--text);
+  resize: vertical;
+  transition: border-color 0.2s;
+}
+
+.input-group textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.input-group textarea::placeholder {
+  color: var(--text-muted);
+  opacity: 0.6;
+}
+
+.input-row {
+  display: flex;
+  gap: 12px;
+  align-items: flex-end;
+}
+
+.input-row .input-group {
+  margin-bottom: 0;
+}
+
+.input-row .input-group:first-child {
+  flex: 0 0 140px;
+}
+
+.input-row .input-group:nth-child(2) {
+  flex: 0 0 140px;
+}
+
+.input-group input[type="text"],
+.input-group input[type="number"] {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--bg-input);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--text);
+  transition: border-color 0.2s;
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  margin-top: 20px;
+}
+
+.btn-primary:hover {
+  background: var(--accent-hover);
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ---- Agent Status ---- */
+.agent-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.agent-card {
+  background: var(--bg-input);
+  border-radius: var(--radius-sm);
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.agent-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0;
+  background: var(--accent);
+  transition: width 0.8s ease;
+}
+
+.agent-card.running::before {
+  width: 100%;
+  animation: progress-pulse 2s ease-in-out infinite;
+}
+
+.agent-card.done::before {
+  width: 100%;
+  background: var(--green);
+}
+
+.agent-card.error::before {
+  width: 100%;
+  background: var(--red);
+}
+
+@keyframes progress-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.agent-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  margin-bottom: 6px;
+}
+
+.agent-card .status {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.agent-card .status.running {
+  color: var(--accent);
+}
+
+.agent-card .status.done {
+  color: var(--green);
+}
+
+.agent-card .status.error {
+  color: var(--red);
+}
+
+.agent-card .items-found {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* ---- Results Dashboard ---- */
+.results-summary {
+  background: var(--green-light);
+  border: 1.5px solid var(--green);
+  border-radius: var(--radius-sm);
+  padding: 20px 24px;
+  margin-bottom: 24px;
+}
+
+.results-summary .savings-amount {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--green);
+}
+
+.results-summary .recommendation {
+  font-size: 1rem;
+  color: var(--text);
+  margin-top: 4px;
+}
+
+.store-comparison {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.store-panel {
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 20px;
+  position: relative;
+}
+
+.store-panel.best {
+  border-color: var(--green);
+  background: var(--green-light);
+}
+
+.store-panel .store-name {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.store-panel .store-total {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 12px;
+}
+
+.store-panel .best-badge {
+  display: inline-block;
+  background: var(--green);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 3px 8px;
+  border-radius: 4px;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+.item-list {
+  list-style: none;
+}
+
+.item-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.9rem;
+}
+
+.item-list li:last-child {
+  border-bottom: none;
+}
+
+.item-list .item-name {
+  color: var(--text);
+  flex: 1;
+  margin-right: 12px;
+}
+
+.item-list .item-price {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.item-list .cheapest {
+  color: var(--green);
+}
+
+.item-list .out-of-stock {
+  color: var(--red);
+  font-style: italic;
+}
+
+/* ---- Optimized Plan ---- */
+.plan-section {
+  margin-top: 28px;
+}
+
+.plan-section h3 {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  margin-bottom: 12px;
+}
+
+.plan-store {
+  background: var(--bg-input);
+  border-radius: var(--radius-sm);
+  padding: 16px 20px;
+  margin-bottom: 12px;
+}
+
+.plan-store .plan-store-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.plan-store .plan-store-name {
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.plan-store .plan-store-subtotal {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--green);
+}
+
+/* ---- Loading Spinner ---- */
+.spinner {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border: 2.5px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 600px) {
+  .app-header h1 {
+    font-size: 2rem;
+  }
+
+  .input-row {
+    flex-direction: column;
+  }
+
+  .input-row .input-group:first-child,
+  .input-row .input-group:nth-child(2) {
+    flex: 1;
+  }
+
+  .card {
+    padding: 20px;
+  }
+}
