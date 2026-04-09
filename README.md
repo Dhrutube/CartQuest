@@ -60,7 +60,7 @@ BROWSER_USE_API_KEY=...        # optional: for Browser Use Cloud
 
 ## How It Works
 
-1. User enters a grocery list + zip code (defaults to 92093 / UCSD area)
+1. User enters a grocery list + zip code (defaults to 92092 / UCSD area)
 2. FastAPI server receives the request and spawns the Orchestrator
 3. Orchestrator creates one Browser Use Agent per store, each with its own Browser instance
 4. Agents run **in parallel** via `asyncio.gather()` — each navigates to a real store website, sets the location, searches for each item, and extracts prices
@@ -103,7 +103,7 @@ grocery-optimizer/
 ## Demo Tips
 
 - Pre-load a grocery list: `eggs, chicken breast, oat milk, rice, bananas, greek yogurt, bread, spinach`
-- Use zip `92093` (UCSD / La Jolla)
+- Use zip `92092` (UCSD / La Jolla)
 - Show the agent browser windows side-by-side during the demo
 - Have a backup set of cached results in case of network issues
 
