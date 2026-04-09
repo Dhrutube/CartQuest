@@ -11,13 +11,13 @@ CartQuest takes your grocery list and zip code, dispatches parallel Browser Use 
 │   React UI  │────▶│  FastAPI Server  │────▶│  Orchestrator       │
 │  (Vite)     │◀────│  /api/optimize   │◀────│                     │
 └─────────────┘     └──────────────────┘     │  ┌───────────────┐  │
-                                             │  │ Walmart Agent │  │
+                                             │  │ Ralph's Agent │  │
                                              │  └───────────────┘  │
                                              │  ┌───────────────┐  │
                                              │  │ Target Agent  │  │
                                              │  └───────────────┘  │
                                              │  ┌───────────────┐  │
-                                             │  │ Vons Agent    │  │
+                                             │  │ TJ's Agent    │  │
                                              │  └───────────────┘  │
                                              └─────────────────────┘
 ```
